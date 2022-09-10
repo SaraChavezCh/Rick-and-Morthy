@@ -11,26 +11,27 @@ strong {
   color: white;
 }
 .card-container {
+    margin: 0 auto;
   width: 300px;
-  height: 510px;
+  height: 560px;
   background-color: #062226;
   text-align: center;
   box-shadow: 0rem 0rem 1rem gray;
 }
 .card-item-name {
-    padding-bottom: 1rem;
   border-bottom: 2px solid #084851;
 }
 .card-item-list {
   width: 60%;
+  height: 15rem;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
   text-align: left;
-  padding: 1rem 0 1rem;
-  margin: 0rem auto;
+  padding: 0;
+  margin: auto auto;
 }
 /* character module */
 .allcards-container {
@@ -54,4 +55,23 @@ strong {
 .general-container {
   width: 80%;
   margin: 3rem auto; /* this margin center all the cards container*/
+}
+.show-characters {
+  padding: 1.5rem;
+  border-radius: 50%;
+  background-color: #70d026;
+  position: relative;
+right: -23rem;
+top:-1rem;
+  
+}
+.fa-solid,
+.fa-angles-down {
+  color: #fcf072;
+  font-size: 2rem;
+}
+.top{
+    position: relative;
+    right: -23rem;
+    top: 2rem;
 }

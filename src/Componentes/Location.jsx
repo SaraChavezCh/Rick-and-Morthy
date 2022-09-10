@@ -10,6 +10,7 @@ const Location = () => {
   const locationRandome = Math.floor(Math.random() * 125) + 1;
   const [typeId, setTypeId] = useState("");
   const [search, setSearch] = useState({});
+  const [isShowCards, setIsShowCards] = useState(false);
 
   useEffect(() => {
     axios
@@ -21,6 +22,11 @@ const Location = () => {
     axios
       .get(`https://rickandmortyapi.com/api/location/${typeId}/`)
       .then((res) => SetLocation(res.data));
+    setIsShowCards(false);
+  };
+  const showCards = () => {
+    setIsShowCards(!isShowCards);
+    // alert("si funciono")
   };
   console.log(location);
   return (
@@ -42,8 +48,20 @@ const Location = () => {
         ></input>
         <button onClick={searchType}>Search</button>
       </section>
+
       <section className="character-container">
-        <Characters location={location} />
+        {isShowCards ? (
+            <>
+          <Characters location={location} />
+          <button onClick={showCards} className="show-characters top">
+            <i class="fa-solid fa-angles-up "></i>
+          </button>
+            </>
+        ) : (
+          <button onClick={showCards} className="show-characters">
+            <i class="fa-solid fa-angles-down"></i>
+          </button>
+        )}
       </section>
     </div>
   );
