@@ -21,12 +21,5 @@ background-position: center;
 }
 }
 
-
-@media screen and (min-width: 1440px){
-  .nav-img{
-    height: 500px;
-      background-position: 0rem -3rem;
-  }
-  }
     
   

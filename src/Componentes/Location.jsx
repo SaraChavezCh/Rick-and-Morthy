@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import Characters from "./Characters";
+import App from "../App.css"
 import characterItem from "../assets/css/characterItem.css";
 
 const Location = () => {
@@ -11,6 +12,7 @@ const Location = () => {
   const [typeId, setTypeId] = useState("");
   const [search, setSearch] = useState({});
   const [isShowCards, setIsShowCards] = useState(false);
+  const [isInfoShowed, setIsInfoShowed] = useState(false);
 
   useEffect(() => {
     axios
@@ -23,6 +25,7 @@ const Location = () => {
       .get(`https://rickandmortyapi.com/api/location/${typeId}/`)
       .then((res) => SetLocation(res.data));
     setIsShowCards(false);
+    setIsInfoShowed(!isInfoShowed)
   };
   const showCards = () => {
     setIsShowCards(!isShowCards);
@@ -32,31 +35,42 @@ const Location = () => {
   return (
     <div className="general-container">
       <section className="main-info-container">
-        <h1>{location.name}</h1>
-        <h2>
-          <strong>Dimension:</strong>
-          {location.dimension}
-        </h2>
-        <h3>
-          <strong>Population:</strong>
-          {location.residents?.length}
-        </h3>
-        <input
-          type="text"
-          value={typeId}
-          onChange={(e) => setTypeId(e.target.value)}
-        ></input>
-        <button onClick={searchType}>Search</button>
+        {isInfoShowed ? (
+          <>
+            <p className="main-title subtitle">{location.name}</p>
+            <p className="subtitle">
+              <strong>Dimension: </strong>
+              {location.dimension}
+            </p>
+            <p className="main-sub subtitle">
+              <strong>Population: </strong>
+              {location.residents?.length}
+            </p>
+            <button onClick={()=> setIsInfoShowed(!isInfoShowed)}>New Search</button>
+          </>
+        ) : (
+          <div className="input-container">
+            <input
+            className="input-search"
+              autoFocus={Location}
+              placeholder="Type Name Dimension"
+              type="text"
+              value={typeId}
+              onChange={(e) => setTypeId(e.target.value)}
+            ></input>
+            <button className="input-btn" onClick={searchType}>Click me</button>
+          </div>
+        )}
       </section>
 
       <section className="character-container">
         {isShowCards ? (
-            <>
-          <Characters location={location} />
-          <button onClick={showCards} className="show-characters top">
-            <i class="fa-solid fa-angles-up "></i>
-          </button>
-            </>
+          <>
+            <Characters location={location} />
+            <button onClick={showCards} className="show-characters">
+              <i class="fa-solid fa-angles-up "></i>
+            </button>
+          </>
         ) : (
           <button onClick={showCards} className="show-characters">
             <i class="fa-solid fa-angles-down"></i>
