@@ -48,35 +48,37 @@ const Location = () => {
         <>
       <section className="main-info-container">
         {isInfoShowed ? (
-          <>
-            <p className="main-title subtitle">{location.name}</p>
-            <p className="subtitle">
-              <strong>Dimension: </strong>
-              {location.type}
-            </p>
-            <p className="subtitle">
-              <strong>Type: </strong>
-              {location.dimension}
-            </p>
-            <p className="main-sub subtitle">
-              <strong>Population: </strong>
-              {location.residents?.length}
-            </p>
-            <dvi>
-            <button className="input-search btn " onClick={()=> setIsInfoShowed(!isInfoShowed)}>New Search</button>
-            </dvi>
-          </>
-        ) : (
+         
           <div className="input-container">
-            <input
-            className="input-search"
-              placeholder="Type Name Dimension"
-              type="text"
-              value={typeId}
-              onChange={(e) => setTypeId(e.target.value)}
-            ></input>
-            <button className="input-search btn up " onClick={searchType}>Click me</button>
-          </div>
+          <input
+          className="input-search"
+            placeholder="Type Name Dimension"
+            type="text"
+            value={typeId}
+            onChange={(e) => setTypeId(e.target.value)}
+          ></input>
+          <button className="input-search btn up " onClick={searchType}>Click me</button>
+        </div>
+        ) : (
+          <>
+          <p className="main-title subtitle">{location.name}</p>
+          <p className="subtitle">
+            <strong>Dimension: </strong>
+            {location.type}
+          </p>
+          <p className="subtitle">
+            <strong>Type: </strong>
+            {location.dimension}
+          </p>
+          <p className="main-sub subtitle">
+            <strong>Population: </strong>
+            {location.residents?.length}
+          </p>
+          <dvi>
+          <button className="input-search btn " onClick={()=> setIsInfoShowed(!isInfoShowed)}>New Search</button>
+          </dvi>
+        </>
+          
         )}
       </section>
 

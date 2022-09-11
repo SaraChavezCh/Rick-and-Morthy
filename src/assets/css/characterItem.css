@@ -124,7 +124,16 @@ strong {
   border-radius: 50%;
   background: transparent;
   color: #70d026d8;
+  animation-name: btn;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 }
+@keyframes btn{
+  0% {background-color: #fff;} /*Amarillo*/
+ 90% {background-color: #062226;} /*Otra vez amarillo*/
+}
+
+
 .btn-up{
   margin: 1rem;
 }
@@ -168,7 +177,7 @@ strong {
     padding: 0;
   }
   .input-search{
-    font-size: 8px;
+    font-size: 18px;
   }
   .nav-img{
     background-position-y: -1rem;
@@ -176,7 +185,7 @@ strong {
 }
 @media screen and (min-width: 1024px) {
   .input-search{
-    font-size: 9px;
+    font-size: 18px;
   }
 }
 
