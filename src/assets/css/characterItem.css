@@ -1,3 +1,31 @@
+/* PANTALLA DE CARGA */
+.loading-img{
+  animation-duration: 3s;
+  animation-name: loading;
+  position: absolute;
+  animation-iteration-count: infinite;
+  top: 30rem;
+  left: 50rem;
+  width: 300px;
+}
+@keyframes loading{
+  
+  form{
+    transform: rotate(0deg);
+    /* width: 300px; */
+  }
+  to{
+    transform: rotate(360deg);
+    /* width: 200px; */
+
+  }
+}
+.loading-p{
+  position: absolute;
+  color: rgb(181, 205, 60);
+  top: 50rem;
+  left: 55rem;
+}
 .card-item {
   list-style: none;
   color: gray;
@@ -139,9 +167,23 @@ strong {
     top: -8px;
     padding: 0;
   }
+  .input-search{
+    font-size: 8px;
+  }
+  .nav-img{
+    background-position-y: -1rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .input-search{
+    font-size: 9px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
+  .nav-img{
+    background-position-y: -6rem;
+  }
   .input-container{
     width: 150%;
   }
@@ -161,4 +203,12 @@ strong {
     width: 100px;
     right: 17rem;
     top: -8px;
+}
+}
+@media screen and (min-width: 1630px) {
+  .up {
+    width: 100px;
+    right: 28rem;
+    top: -8px;
+}
 }

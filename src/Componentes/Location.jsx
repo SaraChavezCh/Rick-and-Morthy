@@ -5,25 +5,28 @@ import axios from "axios";
 import Characters from "./Characters";
 import App from "../App.css"
 import characterItem from "../assets/css/characterItem.css";
+import favicon from "../assets/images/favicon.webp"
 
 const Location = () => {
-  const [location, SetLocation] = useState({});
+  const[isLoading, setIsLoading] = useState (true)
+  const [location, setLocation] = useState({});
   const locationRandome = Math.floor(Math.random() * 125) + 1;
   const [typeId, setTypeId] = useState("");
-  const [search, setSearch] = useState({});
   const [isShowCards, setIsShowCards] = useState(false);
   const [isInfoShowed, setIsInfoShowed] = useState(false);
 
   useEffect(() => {
     axios
       .get(`https://rickandmortyapi.com/api/location/${locationRandome}`)
-      .then((res) => SetLocation(res.data));
-  }, []);
+      .then((res) => { setLocation(res.data);
+      })
+      .finally(() => setIsLoading(false));
+  },[]);
 
   const searchType = () => {
     axios
       .get(`https://rickandmortyapi.com/api/location/${typeId}/`)
-      .then((res) => SetLocation(res.data));
+      .then((res) => setLocation(res.data));
     setIsShowCards(false);
     setIsInfoShowed(!isInfoShowed)
   };
@@ -34,6 +37,15 @@ const Location = () => {
   console.log(location);
   return (
     <div className="general-container">
+      {
+        isLoading ? ( 
+          <>
+            <img className="loading-img" src={favicon} alt="sata" />
+            <h1 className="loading-p">Loading...</h1>
+          </>)
+       
+        :
+        <>
       <section className="main-info-container">
         {isInfoShowed ? (
           <>
@@ -58,7 +70,6 @@ const Location = () => {
           <div className="input-container">
             <input
             className="input-search"
-              autoFocus={Location}
               placeholder="Type Name Dimension"
               type="text"
               value={typeId}
@@ -74,15 +85,17 @@ const Location = () => {
           <>
             <Characters location={location} />
             <button onClick={showCards} className="show-characters btn-up">
-              <i class="fa-solid fa-angles-up "></i>
+              <i className="fa-solid fa-angles-up "></i>
             </button>
           </>
         ) : (
           <button onClick={showCards} className="show-characters">
-            <i class="fa-solid fa-angles-down"></i>
+            <i className="fa-solid fa-angles-down"></i>
           </button>
         )}
       </section>
+        </>
+        }
     </div>
   );
 };
