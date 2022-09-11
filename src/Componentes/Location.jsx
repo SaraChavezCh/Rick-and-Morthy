@@ -40,13 +40,19 @@ const Location = () => {
             <p className="main-title subtitle">{location.name}</p>
             <p className="subtitle">
               <strong>Dimension: </strong>
+              {location.type}
+            </p>
+            <p className="subtitle">
+              <strong>Type: </strong>
               {location.dimension}
             </p>
             <p className="main-sub subtitle">
               <strong>Population: </strong>
               {location.residents?.length}
             </p>
-            <button onClick={()=> setIsInfoShowed(!isInfoShowed)}>New Search</button>
+            <dvi>
+            <button className="input-search btn " onClick={()=> setIsInfoShowed(!isInfoShowed)}>New Search</button>
+            </dvi>
           </>
         ) : (
           <div className="input-container">
@@ -58,7 +64,7 @@ const Location = () => {
               value={typeId}
               onChange={(e) => setTypeId(e.target.value)}
             ></input>
-            <button className="input-btn" onClick={searchType}>Click me</button>
+            <button className="input-search btn " onClick={searchType}>Click me</button>
           </div>
         )}
       </section>
