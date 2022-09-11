@@ -64,7 +64,7 @@ const Location = () => {
               value={typeId}
               onChange={(e) => setTypeId(e.target.value)}
             ></input>
-            <button className="input-search btn " onClick={searchType}>Click me</button>
+            <button className="input-search btn up " onClick={searchType}>Click me</button>
           </div>
         )}
       </section>
@@ -73,7 +73,7 @@ const Location = () => {
         {isShowCards ? (
           <>
             <Characters location={location} />
-            <button onClick={showCards} className="show-characters">
+            <button onClick={showCards} className="show-characters btn-up">
               <i class="fa-solid fa-angles-up "></i>
             </button>
           </>
